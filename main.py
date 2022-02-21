@@ -18,7 +18,7 @@ async def test(ctx):
     print("TEST")
     await ctx.send('test')
 
-#check how many fardcoins does user have
+#check how many becoin does user have
 @bot.command()
 async def stats(ctx):
     print("STATS")
@@ -26,9 +26,9 @@ async def stats(ctx):
         status=info["accounts"][str(ctx.message.author.id)]["balance"]
 
         if((status)<100):
-            await ctx.message.author.send("you are poor ("+str(status)+" fardcoins)")
+            await ctx.message.author.send("you are poor ("+str(status)+" becoins)")
         else:
-            await ctx.message.author.send("you have "+str(status)+ " fardcoins")
+            await ctx.message.author.send("you have "+str(status)+ " becoins")
     except json.decoder.JSONDecodeError:
         print("There was a problem accessing the json data (balance).")
     await ctx.message.delete()
@@ -39,11 +39,11 @@ async def give(ctx, user:discord.User, ammount):
     print("GIVE")
     try:
         if((info["accounts"][str(ctx.message.author.id)]["balance"]-int(ammount))<0):
-            await ctx.send("you have insufficient ammount of fardcoins")
+            await ctx.send("you have insufficient ammount of becoins")
         else:
             info["accounts"][str(user.id)]["balance"] += int(ammount)
             info["accounts"][str(ctx.message.author.id)]["balance"] -= int(ammount)
-            await ctx.message.author.send("sent " + str(ammount) + " fardcoins" + " to " + str(user))
+            await ctx.message.author.send("sent " + str(ammount) + " balance" + " to " + str(user))
 
 
     except ValueError:
@@ -52,8 +52,8 @@ async def give(ctx, user:discord.User, ammount):
 
 #if user guesses correct int from 0 to 1 give one fardcoin else take one fardcoin
 @bot.command()
-async def givmefard(ctx, arg):
-    print("GIVMEFARD")
+async def givmebecon(ctx, arg):
+    print("GIVMEBECON")
     i=random.randrange(0, 2)
     print("    ", i)
 
