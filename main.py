@@ -6,7 +6,7 @@ import discord
 from discord.ext import commands
 
 #define vars
-ofile = open("./info.json","r+",encoding='utf-8')
+ofile = open("../walletjson/info.json","r+",encoding='utf-8')
 info = json.load(ofile)
 
 #define commands prefix
