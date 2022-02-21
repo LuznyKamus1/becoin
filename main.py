@@ -65,6 +65,16 @@ async def helpme(ctx):
 #     if(str(ctx.message.author.id) in info["accounts"]):
 #         info["accounts"][str(ctx.message.author.id)]
 
+@bot.command()
+async def bankgive(ctx, user:discord.User, ammount):
+    print("BANKGIVE")
+    if(discord.utils.get(ctx.guild.roles, name="bankier") in ctx.message.author.roles):
+        info["accounts"][str(user.id)]["balance"] += float(ammount)
+        print("    good")
+
+    else: print("    bad")
+    await ctx.message.delete()
+
 bot.run(info["discordinfo"]["token"])
 #save file on exit and close
 ofile.seek(0)
