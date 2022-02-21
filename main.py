@@ -38,11 +38,11 @@ async def stats(ctx):
 async def give(ctx, user:discord.User, ammount):
     print("GIVE")
     try:
-        if((info["accounts"][str(ctx.message.author.id)]["balance"]-int(ammount))<0):
+        if((info["accounts"][str(ctx.message.author.id)]["balance"]-float(ammount))<0):
             await ctx.send("you have insufficient ammount of becoins")
         else:
-            info["accounts"][str(user.id)]["balance"] += int(ammount)
-            info["accounts"][str(ctx.message.author.id)]["balance"] -= int(ammount)
+            info["accounts"][str(user.id)]["balance"] += float(ammount)
+            info["accounts"][str(ctx.message.author.id)]["balance"] -= float(ammount)
             await ctx.message.author.send("sent " + str(ammount) + " balance" + " to " + str(user))
 
 
@@ -68,7 +68,7 @@ async def helpme(ctx):
 @bot.command()
 async def bankgive(ctx, user:discord.User, ammount):
     print("BANKGIVE")
-    if(discord.utils.get(ctx.guild.roles, name="bankier") in ctx.message.author.roles):
+    if(discord.utils.get(ctx.guild.roles, name="Bankier") in ctx.message.author.roles):
         info["accounts"][str(user.id)]["balance"] += float(ammount)
         print("    good")
 
