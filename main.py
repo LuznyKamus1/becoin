@@ -59,7 +59,7 @@ async def register(ctx):
     print(json.dumps(info))
     
 
-bot.run(info["token"])
+bot.run(info["token"]);
 
 jfile.seek(0)
 jfile.truncate()
