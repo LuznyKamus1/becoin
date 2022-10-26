@@ -54,9 +54,15 @@ async def bankgive(ctx, user:discord.User, amnt:float):
 @bot.command()
 async def register(ctx):
     print("register")
-    y={str(ctx.author.id):1000}
-    info["wallets"].update(y)
-    print(json.dumps(info))
+    try:
+        y=info["wallets"][str(ctx.author.id)]
+        await ctx.send("imagine")
+        #y-=100
+    except:
+        y={str(ctx.author.id):1000}
+        info["wallets"].update(y)
+        print(json.dumps(info))
+        await ctx.send("registered")
     
 
 bot.run(info["token"]);
