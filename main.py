@@ -28,8 +28,8 @@ async def give(ctx, user:discord.User, amnt:float):
     print("give")
     try:
         if not(str(user.id) == str(ctx.author.id)):
-            if not((info["wallets"][str(ctx.author.id)]-amnt)<0):
-                info["wallets"][str(ctx.author.id)]-=-amnt
+            if not((float(info["wallets"][str(ctx.author.id)])-amnt)<0.0):
+                info["wallets"][str(ctx.author.id)]-=amnt
                 info["wallets"][str(user.id)]+=amnt
                 await ctx.send("sent "+str(amnt)+" to "+str(user))
             else:
